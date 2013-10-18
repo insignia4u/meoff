@@ -32,3 +32,7 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 end
+
+def last_email
+  ActionMailer::Base.deliveries.last
+end
