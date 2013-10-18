@@ -25,4 +25,5 @@ group :test do
   gem 'capybara-email',		github: 'dockyard/capybara-email'
   gem 'database_cleaner',	github: 'bmabey/database_cleaner'
   gem 'shoulda-matchers'
+  gem 'launchy'
 end

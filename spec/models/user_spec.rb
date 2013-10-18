@@ -1,55 +1,60 @@
 require 'spec_helper'
 
 describe User do
-  let(:user) {
-    User.new(
-      full_name: "Bruce Wayne",
-      email: "bruce@wayne.com",
-      password: "123123",
-      password_confirmation: "123123",
-      company_attributes: { name: "Wayne Enterprises" }
-    )
-  }
-
-  describe "Validations" do
-    it { should validate_presence_of(:company) }
-    it { should validate_presence_of(:full_name) }
-  end
-
   describe "Associations" do
     it { should belong_to(:company) }
   end
 
-  describe "Delegators" do
-    before(:each) do
-      user.save
+  describe "Validations" do
+    it { should validate_presence_of(:full_name) }
+    it { should validate_presence_of(:company) }
+  end
+
+  describe "Behaviors" do
+    it { should accept_nested_attributes_for(:company) }
+  end
+
+  describe "Factory validation" do
+    it "creates a valid user" do
+      expect { create(:user) }.to change { User.count }.by(1)
     end
 
-     describe "#company_name" do
-      it "delegates company_name to Company" do
-        expect(user.company_name).to eql("Wayne Enterprises")
-      end
+    it "creates a valid company" do
+      expect { create(:user) }.to change { Company.count }.by(1)
     end
   end
 
-  describe "Company creation" do
-    context "with company attributes present" do
-      it "creates a new company" do
-        expect{user.save}.to change{Company.count}.by(1)
+  describe "Company creation through nested attribute" do
+    context "with valid attributes" do
+      let(:valid_user_attributes) {
+        attributes_for(
+          :user, company: nil, company_attributes: attributes_for(:company)
+        )
+      }
+
+      it "creates a valid company" do
+        expect {
+          User.create(valid_user_attributes)
+        }.to change { Company.count }.by(1)
       end
 
-      it "associates the company to the user" do
-        user.save
-        expect(user.company).to eql(Company.last)
+      it "associates that company with the user" do
+        User.create(valid_user_attributes)
+        expect(User.last.company).to eql(Company.last)
       end
     end
 
-    context "without company attributes present" do
-      it "requires company name to be present" do
-        subject.company_attributes = { name: nil }
-        expect(subject).to_not be_valid
-        expect(subject).to have_at_least(1).errors_on(:company)
-        expect(subject).to have_at_least(1).errors_on("company.name")
+    context "with invalid attributes" do
+      let(:invalid_user_attributes) {
+        attributes_for(
+          :user, company: nil, company_attributes: { name: nil }
+        )
+      }
+
+      it "doesn't create a empty company" do
+        expect {
+          User.create(invalid_user_attributes)
+        }.not_to change { Company.count }.by(1)
       end
     end
   end
