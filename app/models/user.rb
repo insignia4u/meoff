@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   belongs_to :company
   accepts_nested_attributes_for :company
+  has_many :notifications
   delegate :name, to: :company, prefix: true, allow_nil: true
 
   validates :company, :full_name, presence: true

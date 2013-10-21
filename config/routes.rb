@@ -3,5 +3,9 @@ Meoff::Application.routes.draw do
 
   devise_for :users
 
+  resources :notifications
+
+  get "/alert-the-team",	to: "notifications#new"
+
   root to: "home#index"
 end

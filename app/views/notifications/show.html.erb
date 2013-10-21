@@ -1,0 +1,18 @@
+<p>User: <strong><%= current_user.full_name %></strong></p>
+<h1>Modify Notification</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Reason:</b>
+  <%= @notification.reason %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @notification.scheduled_on %>
+</p>
+
+
+<%= link_to 'Confirm', edit_notification_path(@notification) %> |
+<%= link_to 'Cancel', notifications_path %>

@@ -1,0 +1,25 @@
+<%= form_for(@notification) do |f| %>
+  <% if @notification.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@notification.errors.count, "error") %> prohibited this notification from being saved:</h2>
+
+      <ul>
+      <% @notification.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :reason %><br />
+    <%= f.text_area :reason, :autofocus => true %>
+  </div>
+  <div class="field">
+    <%= f.label :scheduled_on %><br />
+    <%= f.text_field :scheduled_on %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Notify the team" %>
+  </div>
+<% end %>

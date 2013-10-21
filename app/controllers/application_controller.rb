@@ -9,4 +9,11 @@ protected
         :email, :password, :password_confirmation, :company_attributes => (:name))
     end
   end
+
+  def current_company
+  	return nil unless current_user
+
+  	@current_company ||= current_user.company
+  end
+  helper_method :current_company
 end
