@@ -3,7 +3,7 @@ FactoryGirl.define do
   	user
   	company
 
-    sequence(:reason) { |n| "Doctor Appointment" }
-    sequence(:scheduled_on) { |n| 3.days.from_now }
+    :reason "Doctor Appointment"
+    :scheduled_on 3.days.from_now
   end
 end
