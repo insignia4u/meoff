@@ -3,6 +3,7 @@ require 'spec_helper'
 describe User do
   describe "Associations" do
     it { should belong_to(:company) }
+    it { should have_many(:notifications) }
   end
 
   describe "Validations" do

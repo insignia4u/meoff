@@ -1,7 +1,4 @@
 class NotificationsController < ApplicationController
-  # GET /notifications
-  # GET /notifications.json
-
   before_filter :authenticate_user! #, :except => [:show, :index]
   before_filter :get_current_notification, only: [:show, :edit, :update, :destroy]
 
@@ -14,8 +11,6 @@ class NotificationsController < ApplicationController
     end
   end
 
-  # GET /notifications/1
-  # GET /notifications/1.json
   def show
     respond_to do |format|
       format.html # show.html.erb
@@ -23,8 +18,6 @@ class NotificationsController < ApplicationController
     end
   end
 
-  # GET /notifications/new
-  # GET /notifications/new.json
   def new
     @notification = current_user.notifications.build
 
@@ -34,8 +27,6 @@ class NotificationsController < ApplicationController
     end
   end
 
-  # POST /notifications
-  # POST /notifications.json
   def create
     @notification = current_user.notifications.build(notification_params)
     @notification.company = current_company
@@ -51,8 +42,6 @@ class NotificationsController < ApplicationController
     end
   end
 
-  # PUT /notifications/1
-  # PUT /notifications/1.json
   def update
     respond_to do |format|
       if @notification.update_attributes(notification_params)
@@ -65,8 +54,6 @@ class NotificationsController < ApplicationController
     end
   end
 
-  # DELETE /notifications/1
-  # DELETE /notifications/1.json
   def destroy
     @notification.destroy
 
