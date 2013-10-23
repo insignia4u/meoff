@@ -10,6 +10,10 @@ protected
     end
   end
 
+  def after_sign_in_path_for(resource)
+    notifications_path
+  end
+
   def current_company
   	return nil unless current_user
 
