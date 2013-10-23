@@ -4,6 +4,6 @@ FactoryGirl.define do
   	company
 
     sequence(:reason) { |n| "Doctor Appointment ##{n}" }
-    sequence(:scheduled_on) { |n| rand(1..100).days.from_now }
+    sequence(:scheduled_on) { |n| n.days.from_now }
   end
 end
