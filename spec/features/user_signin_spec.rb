@@ -14,7 +14,7 @@ feature "User Signin" do
 
     click_button 'Sign in'
 
-    expect(current_path).to eql(root_path)
+    expect(current_path).to eql(notifications_path)
   end
 
   scenario "signing in with an unexisting user account" do

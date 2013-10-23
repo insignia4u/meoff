@@ -1,0 +1,24 @@
+<h2><%= link_to "MeOff", root_path %></h2>
+
+<p>User: <strong><%= current_user.full_name %></strong></p>
+<h2>List of Notifications</h2>
+
+<p id="notice"><%= notice %></p>
+
+<table>
+  <tr>
+    <th>Reason</th>
+    <th>Scheduled On</th>
+  </tr>
+
+<% @notifications.each do |notification| %>
+  <tr>
+    <td><%= notification.reason %></td>
+    <td><%= notification.scheduled_on %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Notification', new_notification_path %>

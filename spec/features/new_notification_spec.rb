@@ -17,6 +17,7 @@ feature "New Notification" do
 
     background do 
       login_with(user)
+      visit new_notification_path
     end
 
     scenario "Posting a new notification" do
