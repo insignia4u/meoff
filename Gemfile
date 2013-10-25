@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails',        		'4.0.0'
-gem 'sqlite3'
+gem 'pg'
 gem 'sass-rails',   		'~> 4.0.0'
 gem 'uglifier',     		'>= 1.3.0'
 gem 'coffee-rails', 		'~> 4.0.0'
@@ -11,6 +11,7 @@ gem 'puma'
 gem 'figaro'
 gem 'devise'
 gem 'devise_invitable'
+gem 'rails_12factor', group: :production
 
 group :doc do
   gem 'sdoc', require: false
@@ -28,3 +29,5 @@ group :test do
   gem 'shoulda-matchers'
   gem 'launchy'
 end
+
+ruby "2.0.0"

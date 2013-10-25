@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20131024124400) do
     t.datetime "updated_at"
   end
 
-  add_index "companies", ["name"], name: "index_companies_on_name", unique: true
+  add_index "companies", ["name"], name: "index_companies_on_name", unique: true, using: :btree
 
   create_table "notifications", force: true do |t|
     t.text     "reason"
@@ -58,10 +58,10 @@ ActiveRecord::Schema.define(version: 20131024124400) do
     t.string   "invited_by_type"
   end
 
-  add_index "users", ["company_id"], name: "index_users_on_company_id"
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["invitation_token"], name: "index_users_on_invitation_token", unique: true
-  add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id"
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["company_id"], name: "index_users_on_company_id", using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["invitation_token"], name: "index_users_on_invitation_token", unique: true, using: :btree
+  add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
