@@ -10,6 +10,7 @@ gem 'jbuilder',     		'~> 1.2'
 gem 'puma'
 gem 'figaro'
 gem 'devise'
+gem 'devise_invitable'
 
 group :doc do
   gem 'sdoc', require: false
