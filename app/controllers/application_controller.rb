@@ -8,6 +8,14 @@ protected
       u.permit(:name, :full_name,
         :email, :password, :password_confirmation, :company_attributes => (:name))
     end
+
+    devise_parameter_sanitizer.for(:invite) do |u|
+      u.permit(:full_name, :email, :invitation_token)
+    end    
+
+    devise_parameter_sanitizer.for(:accept_invitation) do |u|
+      u.permit(:full_name, :password, :password_confirmation, :invitation_token)
+    end
   end
 
   def after_sign_in_path_for(resource)
