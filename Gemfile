@@ -29,5 +29,3 @@ group :test do
   gem 'shoulda-matchers'
   gem 'launchy'
 end
-
-ruby "2.0.0"
