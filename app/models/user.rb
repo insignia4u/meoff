@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
 
   devise :invitable, :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :invitable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable, :invitable
 
   belongs_to :company
   accepts_nested_attributes_for :company
