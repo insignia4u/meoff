@@ -11,5 +11,9 @@ Meoff::Application.routes.draw do
 
   get '/alert-the-team',	to: 'notifications#new'
 
+  authenticated :user do
+    root to: 'notifications#index', as: :authenticated_root
+  end
+
   root to: 'home#index'
 end
