@@ -12,6 +12,6 @@ feature "Homepage" do
 	scenario "for visitors" do
 		visit root_path
 
-		expect(page).to have_content("Home#index")
+		expect(page).to have_content("Meoff Homepage")
 	end
 end
