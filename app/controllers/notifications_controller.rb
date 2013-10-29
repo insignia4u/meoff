@@ -3,7 +3,7 @@ class NotificationsController < ApplicationController
   before_filter :get_current_notification, only: [:show, :edit, :update, :destroy]
 
   def index
-    @notifications = current_user.notifications
+    @notifications = current_company.notifications
 
     respond_to do |format|
       format.html # index.html.erb
