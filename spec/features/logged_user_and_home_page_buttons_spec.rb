@@ -1,9 +1,9 @@
 require "spec_helper"
 
-feature "The Sign in and Sign out buttons" do
+feature "User session buttons presentation" do
   given(:user) { create(:user, :confirmed) }
 
-  scenario "can to be seen for visitors" do
+  scenario "with a visitor" do
 
     visit root_path
 
@@ -11,7 +11,7 @@ feature "The Sign in and Sign out buttons" do
     expect(page).to have_content("Sign Up")
   end
 
-  scenario "can't to be seen for logged users" do
+  scenario "with a logged in user" do
     login_with(user)
 
     visit root_path
