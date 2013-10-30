@@ -1,6 +1,9 @@
 <h2><%= link_to "MeOff", root_path %></h2>
 
-<p>User: <strong><%= current_user.full_name %></strong></p>
+<p>
+  User: <strong><%= current_user.full_name %></strong> 
+  ( <%= link_to 'Sign Out', destroy_user_session_path %> )
+</p>
 <h2>List of Notifications</h2>
 
 <p id="notice"><%= notice %></p>
