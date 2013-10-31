@@ -40,7 +40,9 @@ feature "Invite Users" do
       
       click_on "Send an invitation"
 
-      visit users_sign_out_path
+      visit root_path
+
+      click_on "Sign Out"
 
       last_user = User.last
 
