@@ -6,7 +6,7 @@ protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) do |u|
       u.permit(:name, :full_name,
-        :email, :password, :password_confirmation, :manager, :company_attributes => (:name))
+        :email, :password, :password_confirmation, :company_attributes => (:name))
     end
 
     devise_parameter_sanitizer.for(:invite) do |u|

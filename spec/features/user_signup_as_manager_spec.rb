@@ -16,8 +16,7 @@ feature "User Signup" do
 
     expect(User.where(email: "bruce@wayne.com")).to exist
     expect(Company.where(name: "Wayne Inc.")).to exist
-    wayne_company = Company.where(name: "Wayne Inc.")
-    expect(wayne_companys.first.users to include(User.where(email:"bruce@wayne.com")).first
+    expect(Company.where(name: "Wayne Inc.").first.users).to include(User.where(email:"bruce@wayne.com").first)
     expect(User.last.manager).to eql(true)    
     expect(page).to have_content("A message with a confirmation link has been sent")
     expect(current_path).to eql(root_path)
