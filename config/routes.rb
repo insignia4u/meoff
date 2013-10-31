@@ -1,7 +1,10 @@
 Meoff::Application.routes.draw do
   get 'home/index'
 
-  devise_for :users, :controllers => { :invitations => 'users/invitations' }
+  devise_for :users, :controllers => { 
+    :invitations   => 'users/invitations', 
+    :registrations => 'registrations' 
+  }
 
   devise_scope :user do
     get "/users/sign_out", :to => "devise/sessions#destroy"
