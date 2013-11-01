@@ -1,7 +1,7 @@
 require "spec_helper"
 
 feature "Invite Users" do
-  given(:user) { create(:user, :confirmed) }
+  given(:user) { create(:user, :confirmed, :as_manager) }
 
   background do
     visit new_user_invitation_path
