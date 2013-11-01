@@ -25,4 +25,5 @@
 <br />
 
 <%= link_to 'New Notification', new_notification_path %> |
-<%= link_to 'Invite Users', new_user_invitation_path %>
+<%= link_to 'Invite Users', new_user_invitation_path %> |
+<%= link_to 'Manage Users', '#' if current_user.manager? %>

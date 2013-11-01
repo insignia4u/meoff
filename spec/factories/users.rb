@@ -11,5 +11,9 @@ FactoryGirl.define do
   	trait :confirmed do
       after(:create) { |user| user.confirm! }
     end
+
+    trait :as_manager do
+      manager true
+    end
   end
 end
