@@ -1,9 +1,9 @@
 class Users::InvitationsController < Devise::InvitationsController
-  before_filter :user_correct
+  before_filter :check_user_privileges, only: [:new]
 
-  def user_correct
-    if user_signed_in?
-      redirect_to root_path, notice: "You don't have the privileges to access this feature." unless current_user.manager 
+  def check_user_privileges
+    unless current_user.try(:manager?)
+      redirect_to root_path, notice: "You don't have the privileges to access this feature."
     end
   end
 
